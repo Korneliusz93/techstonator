@@ -1,0 +1,58 @@
+<html>
+{% extends "bootstrap/base.html"  %}
+{% block title  %}Wiersz{% endblock  %}
+<body>
+<head>
+  <title>Your Website Title</title>
+  <!-- Comment #1: OG Tags -->
+  <meta property="og:url"           content="onet.pl" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Your Website Title" />
+  <meta property="og:description"   content="Your description" />
+  <!--<meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />-->
+</head>
+{% block navbar  %}
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">Techstonator</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/about">O projekcie</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock  %}
+
+{% block content  %}
+<div class="container">
+  <!-- Comment #2: SDK -->
+  <div id="fb-root"></div>
+  <script>
+	(function(d, s, id){
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+<div class="page-header">
+	<h1> {{art_piece[0]}}...</h1>
+ </div>
+
+{% for piece in art_piece  %}
+	<div class="fb-quotable"><p>{{ piece|capitalize }}</p></div>
+{% endfor  %}
+<div class="fb-quote"></div>
+</div>
+{% endblock  %}	
+</body>
+</html>
